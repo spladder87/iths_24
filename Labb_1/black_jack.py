@@ -1,22 +1,4 @@
-# Skapa ett program som simulerar ett blackjack-spel mellan en spelare och en dator.
-
-# ·         Spelet spelas med en vanlig kortlek som blandas innan varje runda.
-
-# ·         Varje spelare får två kort i början av spelet. Datorn visar bara upp ett av sina kort.
-
-# ·         Spelaren kan välja att ta fler kort (hit) eller stanna på sina nuvarande kort (stand).
-
-# ·         Spelaren kan fortsätta att ta kort tills hen når 21 poäng eller över.
-
-# ·         Om spelaren går över 21 poäng förlorar hen direkt.
-
-# ·         När spelaren stannar, spelar datorn sin tur. Datorn måste ta kort så länge summan av korten är mindre än 17 poäng och stanna när datorns kortsumma är 17 poäng eller mer.
-
-# ·         Om datorn går över 21 poäng vinner spelaren oavsett vilka kort spelaren har.
-
-# ·         Om varken spelaren eller datorn går över 21 poäng så vinner den som har högst kortsumma.
-
-
+import random
 
 class Card:
     def __init__(self, suit, value):
@@ -26,7 +8,6 @@ class Card:
     def __str__(self):
         return f"{self.value} of {self.suit}"
 
-
 class Deck:
     def __init__(self):
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
@@ -34,12 +15,10 @@ class Deck:
         self.cards = [Card(suit, value) for suit in suits for value in values]
 
     def shuffle(self):
-        import random
         random.shuffle(self.cards)
 
     def deal(self):
         return self.cards.pop()
-
 
 class Hand:
     def __init__(self):
@@ -49,8 +28,7 @@ class Hand:
         self.cards.append(card)
 
     def get_value(self):
-        value = 0
-        aces = 0
+        value, aces = 0, 0
         for card in self.cards:
             if card.value in ['Jack', 'Queen', 'King']:
                 value += 10
@@ -67,116 +45,81 @@ class Hand:
     def __str__(self):
         return ', '.join(map(str, self.cards))
 
-
 class Player:
     def __init__(self, name):
         self.name = name
         self.hand = Hand()
 
     def is_hitting(self):
-        answear = input("Do you want to hit? (y/n): ").lower()
-        if answear == 'y':
-            return True
-        else:
-            print("Player stands!")
-            return False
+        return input("Do you want to hit? (y/n): ").lower() == 'y'
 
     def is_busted(self):
         return self.hand.get_value() > 21
 
 class Dealer(Player):
-    def is_hitting(self):
-        # if the dealer has less than 17, the dealer should hit
-        return True if self.hand.get_value() < 17 else False
-
+    pass  # Inherits everything from Player
 
 class Game:
     def __init__(self):
-        self.deck = Deck()
+        self.deck, self.player, self.dealer = Deck(), Player("Player"), Dealer("Dealer")
         self.deck.shuffle()
-        self.player = Player("Player")
-        self.dealer = Dealer("Dealer")
 
-    def show_hands(self, initial=False):
+    def _deal_initial_cards(self):
+        for _ in range(2):
+            self.player.hand.add_card(self.deck.deal())
+            self.dealer.hand.add_card(self.deck.deal())
+
+    def _player_turn(self):
+        while self.player.is_hitting():
+            print("Player hits!")
+            self.player.hand.add_card(self.deck.deal())
+            self._show_hands()
+            if self.player.is_busted():
+                print("Player busts!")
+                break
+
+    def _dealer_turn(self):
+        while self.dealer.hand.get_value() < 17:
+            print("Dealer hits!")
+            self.dealer.hand.add_card(self.deck.deal())
+            if self.dealer.is_busted():
+                print("Dealer busts!")
+                break
+
+    def _show_hands(self, initial=False):
+        print(f"{self.player.name} has {self.player.hand} with a value of {self.player.hand.get_value()}")
         if initial:
-            print(f"{self.player.name} has {self.player.hand} with a value of {self.player.hand.get_value()}")
             print(f"{self.dealer.name} has {self.dealer.hand.cards[0]} and an unknown card")
         else:
-            print(f"{self.player.name} has {self.player.hand} with a value of {self.player.hand.get_value()}")
             print(f"{self.dealer.name} has {self.dealer.hand} with a value of {self.dealer.hand.get_value()}")
 
-    def determine_winner(self):
-        player_value = self.player.hand.get_value()
-        dealer_value = self.dealer.hand.get_value()
-        if player_value > 21:
-            print("You busted!")
-        elif dealer_value > 21:
-            print("Dealer busted!")
-        elif player_value > dealer_value:
-            print("You win!")
-        elif player_value < dealer_value:
+    def _determine_winner(self):
+        player_value, dealer_value = self.player.hand.get_value(), self.dealer.hand.get_value()
+        if player_value > 21 or (dealer_value <= 21 and dealer_value > player_value):
             print("Dealer wins!")
+        elif dealer_value > 21 or player_value > dealer_value:
+            print("Player wins!")
         else:
             print("It's a tie!")
 
-    def end_game(self):
-        answear = input("Do you want to play again? (y/n): ").lower()
-        if answear == 'y':
-            return True
-        else:
-            return False
-
-
     def play(self):
         while True:
-            self.deck = Deck()
+            self.deck, self.player.hand, self.dealer.hand = Deck(), Hand(), Hand()
             self.deck.shuffle()
-            self.player.hand = Hand()
-            self.dealer.hand = Hand()
+            self._deal_initial_cards()
+            print("\nWelcome to Blackjack!\n" + "="*20)
+            self._show_hands(initial=True)
 
-            # Initial dealing
-            self.player.hand.add_card(self.deck.deal())
-            self.player.hand.add_card(self.deck.deal())
-            self.dealer.hand.add_card(self.deck.deal())
-            self.dealer.hand.add_card(self.deck.deal())
-
-            print("\n" + "="*20)
-            print("Welcome to Blackjack!")
-            # Show initial hands, hiding dealer's first card
-            self.show_hands(initial=True)
-            print("="*20 + "\n")
-
-            print("Player's turn!")
-            while self.player.is_hitting():
-                print("="*20)
-                print("Player hits!")
-                self.player.hand.add_card(self.deck.deal())
-                self.show_hands()
-                if self.player.is_busted():
-                    print("Player busts!")
-                    self.determine_winner()
-                    break
-            print("="*20)
-
-            print("="*20)
+            self._player_turn()
             if not self.player.is_busted():
-                print("Dealer's turn!")
-                while self.dealer.is_hitting():
-                    print("Dealer hits!")
-                    self.dealer.hand.add_card(self.deck.deal())
-                    self.show_hands()
-                    if self.dealer.is_busted():
-                        print("Dealer busts!")
-                        break
-                print("Dealer stands!")
-                print("="*20)
-                self.show_hands()
-                self.determine_winner()
-                print("="*20)
-            print("="*20)
-            if not self.end_game():
+                self._dealer_turn()
+
+            self._show_hands()
+            self._determine_winner()
+
+            if input("Do you want to play again? (y/n): ").lower() != 'y':
                 break
 
 if __name__ == "__main__":
-    game = Game()
-    game.play()
+    Game().play()
+
