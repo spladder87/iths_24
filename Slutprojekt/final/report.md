@@ -1,7 +1,3 @@
-Here's a detailed Markdown report for your script, formatted for submission to your class:
-
----
-
 # Report: Image Classification using PyTorch with GPU Acceleration and Early Stopping
 
 ## Introduction
