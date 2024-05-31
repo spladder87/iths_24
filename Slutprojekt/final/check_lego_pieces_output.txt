@@ -1,0 +1,52 @@
+PS D:\Ai\tensorflow> & C:/Users/Emilo/AppData/Local/Programs/Python/Python311/python.exe d:/Ai/tensorflow/check_lego_pieces.py
+Image: 52031_Light Stone Grey_1_1619493021.jpeg, True Label: 52031, Predicted Label: 52031
+Image: 60599_Cool Yellow_0_1608731260.jpeg, True Label: 60599, Predicted Label: 60599
+Image: 6005_Spring Yellowish Green_1_1619093773.jpeg, True Label: 6005, Predicted Label: 6005
+Image: c0_3_zrjN_original_87697_1609708052902.jpg, True Label: 87697, Predicted Label: 87697
+Image: 60479_Bright Purple_5_1619134784.jpeg, True Label: 60479, Predicted Label: 13731
+Image: 41748_Dark Red_4_1621167171.jpeg, True Label: 41748, Predicted Label: 41747
+Image: 60476_Lavender_3_1619498733.jpeg, True Label: 60476, Predicted Label: 4070
+Image: 3002_Medium-Yellowish green_2_1619395102.jpeg, True Label: 3002, Predicted Label: 2357
+Image: 14769_Medium Lilac_2_1621088525.jpeg, True Label: 14769, Predicted Label: 14769
+Image: 60599_Olive Green_1_1608721562.jpeg, True Label: 60599, Predicted Label: 60599
+Image: 64225_Dark Red_2_1619094201.jpeg, True Label: 64225, Predicted Label: 64225
+Image: 57909_Reddish Brown_2_1621456661.jpeg, True Label: 57909b, Predicted Label: 90609
+Image: 10197_Dark Brown_3_1621169005.jpeg, True Label: 10197, Predicted Label: 10288
+Image: 16577_Flame Yellowish Orange_4_1619187470.jpeg, True Label: 16577, Predicted Label: 16577
+Image: 3032_Sand Green_0_1621170824.jpeg, True Label: 3032, Predicted Label: 3032
+Image: 6215_Bright Orange_0_1619563885.jpeg, True Label: 6215, Predicted Label: 3040b
+Image: 3040a_Nougat_2_1619353406.jpeg, True Label: 3040b, Predicted Label: 60598
+Image: c3_4_B5_BPzW_original_1618996976499.jpg, True Label: 13349, Predicted Label: 6232
+Image: 47398_Medium Blue_2_1587370414.jpeg, True Label: 47398, Predicted Label: 47398
+Image: 92583_Medium Lavender_0_1621459037.jpeg, True Label: 92583, Predicted Label: 92583
+Image: c1_5_P49_NgxJ_original_1618572805933.jpg, True Label: 2540, Predicted Label: 2540
+Image: 3707_Earth Blue_4_1619483413.jpeg, True Label: 3707, Predicted Label: 3707
+Image: c3_5_mkxP_original_3020_1609710317561.jpg, True Label: 3020, Predicted Label: 3028
+Image: 3623_Flame Yellowish Orange_0_1608687669.jpeg, True Label: 3623, Predicted Label: 3623
+Image: 92903_Earth Green_0_1619363844.jpeg, True Label: 6005, Predicted Label: 6005
+Image: 6231_Cool Yellow_1_1619125022.jpeg, True Label: 6231, Predicted Label: 15712
+Image: 63286_Light Nougat_3_1619549511.jpeg, True Label: 3069b, Predicted Label: 3069b
+Image: 3676_Flame Yellowish Orange_5_1587566518.jpeg, True Label: 3676, Predicted Label: 41682
+Image: 3942a_Medium-Yellowish green_2_1621105077.jpeg, True Label: 3942c, Predicted Label: 3942c
+Image: 92950_White Glow_5_1619130179.jpeg, True Label: 92950, Predicted Label: 92950
+Image: 11215_Light Royal Blue_2_1619504589.jpeg, True Label: 11215, Predicted Label: 11215
+Image: 43719_Aqua_2_1619678891.jpeg, True Label: 43719, Predicted Label: 43719
+Image: 6587_White_1_1621175126.jpeg, True Label: 6587, Predicted Label: 6587
+Image: 20482_Cool Yellow_0_1621091188.jpeg, True Label: 20482, Predicted Label: 20482
+Image: 60476_Cool Yellow_0_1621458294.jpeg, True Label: 60476, Predicted Label: 60476
+Image: 23969_White_8_1588216333.jpeg, True Label: 23969, Predicted Label: 3040b
+Image: c1_4_P11_SINK_original_1619000717772.jpg, True Label: 11153, Predicted Label: 11153
+Image: 32123a_Light Nougat_2_1619493858.jpeg, True Label: 32123b, Predicted Label: 32123b
+Image: 52216_Bright Purple_5_1619396910.jpeg, True Label: 41748, Predicted Label: 41748
+Image: 3622_Bright Bluish Green_5_1619494165.jpeg, True Label: 3622, Predicted Label: 3659
+Image: 30136_Sand Blue_4_1619561499.jpeg, True Label: 30136, Predicted Label: 36841
+Image: 3665a_Medium Blue_0_1619123469.jpeg, True Label: 3665, Predicted Label: 3040b
+Image: 87544_Aqua_0_1608786282.jpeg, True Label: 87544, Predicted Label: 87544
+Image: 10314_White_1_1589300804.jpeg, True Label: 10314, Predicted Label: 11477
+Image: 50305_Cool Yellow_1_1619460206.jpeg, True Label: 50305, Predicted Label: 50305
+Image: 24299_Cool Yellow_1_1619493941.jpeg, True Label: 24299, Predicted Label: 24299
+Image: 98100_Light Royal Blue_0_1619352361.jpeg, True Label: 98100, Predicted Label: 98100
+Image: 32187_Nougat_1_1619159419.jpeg, True Label: 32187, Predicted Label: 74261
+Image: 63868_Bright Green_1_1621081542.jpeg, True Label: 63868, Predicted Label: 63868
+Image: 35382_Medium Azur_3_1619660508.jpeg, True Label: 3005, Predicted Label: 3005
+Accuracy: 64.00%
